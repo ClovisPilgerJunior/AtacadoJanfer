@@ -1,4 +1,4 @@
-package model;
+package presenter;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,13 +6,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import model.DatabaseConnection;
+import model.MainProgramApplication;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class LoginController {
+
+    @FXML
+    private Button loginButton;
 
     @FXML
     private Button cancelButton;
@@ -25,6 +32,18 @@ public class LoginController {
 
     @FXML
     private PasswordField passwordPasswordField;
+
+    @FXML
+    private void initialize() {
+        // Adiciona um listener de evento de teclado ao campo de senha
+        passwordPasswordField.setOnKeyPressed(this::handleKeyPressed);
+    }
+
+    private void handleKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            loginButtonOnAction(new ActionEvent());
+        }
+    }
 
     @FXML
     private void loginButtonOnAction(ActionEvent e){
@@ -65,6 +84,14 @@ public class LoginController {
                     try {
                         Statement updateStatement = conectDB.createStatement();
                         updateStatement.executeUpdate(updateLogin);
+
+                        // Chame o método start() da classe MainProgramApplication para iniciar a aplicação principal
+                        MainProgramApplication mainApp = new MainProgramApplication();
+                        mainApp.start(new Stage());
+
+                        // Feche a janela de login
+                        Stage loginStage = (Stage) loginButton.getScene().getWindow();
+                        loginStage.close();
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }

@@ -1,2 +1,4 @@
-package presenter;public class MainProgramController {
+package presenter;
+
+public class MainProgramController {
 }
