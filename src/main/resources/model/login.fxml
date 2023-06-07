@@ -60,7 +60,7 @@
                   <InnerShadow />
                </effect>
             </Label>
-            <TextField fx:id="usernameTexField" layoutX="79.0" layoutY="136.0" promptText="Digite seu usuário" />
+            <TextField fx:id="usernameTextField" layoutX="79.0" layoutY="136.0" promptText="Digite seu usuário" />
             <PasswordField fx:id="passwordPasswordField" layoutX="79.0" layoutY="170.0" promptText="Digite sua senha" />
             <Button fx:id="loginButton" layoutX="41.0" layoutY="240.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: #bf6ba3;" text="Login" />
             <Button fx:id="cancelButton" layoutX="41.0" layoutY="287.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="30.0" prefWidth="229.0" style="-fx-background-color: #bf6ba3;" text="Cancelar" />
