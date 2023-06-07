@@ -56,7 +56,18 @@ public class LoginController {
 
             while(quereyResult.next()){
                 if (quereyResult.getInt(1) == 1) {
-                    loginMessageLabel.setText("Bem-Vindo," + usernameTextField.getText() +"!");
+                    loginMessageLabel.setText("Bem-Vindo, " + usernameTextField.getText() +"!");
+
+                    // Atualização da coluna "ultimoLogin"
+                    String updateLogin = "UPDATE contausuario SET ultimoLogin = current_timestamp WHERE usuario = '"
+                            + usernameTextField.getText() + "'";
+
+                    try {
+                        Statement updateStatement = conectDB.createStatement();
+                        updateStatement.executeUpdate(updateLogin);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 } else {
                     loginMessageLabel.setText("Login inválido. Tente Novamente");
                 }

@@ -1,5 +1,3 @@
-package model;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,8 +9,8 @@ import java.io.IOException;
 public class LoginApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 520, 400);
+        FXMLLoader loader = new FXMLLoader(LoginApplication.class.getResource("login.fxml"));
+        Scene scene = new Scene(loader.load(), 520, 400);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
